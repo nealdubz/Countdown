@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Image</ion-label>
+    <ion-input type="file" (change)="chooseFile($event)" required></ion-input>
+    <ion-img *ngIf="isFileUploaded" [src]="imgUrl"></ion-img>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Title</ion-label>
+    <ion-input type="text" [(ngModel)]="event.eventName" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-input
+      type="text"
+      [(ngModel)]="event.eventDescription"
+      required
+    ></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Event Date:</ion-label>
+    <ion-datetime
+      [(ngModel)]="event.eventDate"
+      displayFormat="DD/MM/YYYY H:mm"
+      min="2021-01-01"
+      max="2112-12-09"
+      value="2021-21-02T15:03:46.789"
+    ></ion-datetime>
+  </ion-item>
+
+  <ion-button
+    class="ion-padding"
+    color="primary"
+    expand="full"
+    (click)="create(event)"
+    >Create</ion-button
+  >
+</ion-content>

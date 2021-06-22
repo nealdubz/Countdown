@@ -1,43 +1,42 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Days Counter</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Days Counter</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button [routerLink] = "'/add-event'">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-list>
-    <ion-item-sliding *ngFor="let event of events">
-      
-      <ion-item class="no-padding">
-        <ion-thumbnail slot="start">
-          <ion-img [src]="event.photoURL"></ion-img>
-        </ion-thumbnail>
-        <ion-label>{{event.eventName}}</ion-label>
-        <p>{{event.eventDescription}}</p>
-        
-      </ion-item>
-      <ion-item-options side="start">
-        <ion-item-option [routerLink]="['/editpage', event.id]">
-          <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button [routerLink]="'/add-event'">
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+    <ion-list>
+        <ion-button>Test</ion-button>
+        <ion-item-sliding *ngFor="let event of events">
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="delete(event.id)">
-          <ion-icon slot="icon-only" name="trash"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
-  <ion-button type="submit" (click)="authService.SignOut()" expand="block"
-    >Logout</ion-button
-  >
+            <ion-item class="no-padding">
+                <ion-thumbnail slot="start">
+                    <ion-img [src]="event.photoURL"></ion-img>
+                </ion-thumbnail>
+                <ion-label>{{event.eventName}}</ion-label>
+                <p>{{event.eventDescription}}</p>
+
+            </ion-item>
+            <ion-item-options side="start">
+                <ion-item-option [routerLink]="['/editpage', event.id]">
+                    <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+
+            <ion-item-options side="end">
+                <ion-item-option color="danger" (click)="delete(event.id)">
+                    <ion-icon slot="icon-only" name="trash"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-button type="submit" (click)="authService.SignOut()" expand="block">Logout</ion-button>
 </ion-content>
